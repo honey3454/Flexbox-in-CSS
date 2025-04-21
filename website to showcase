@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pricing Section</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+      background-color: #f4f1ff;
+    }
+
+    .pricing-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 200px;
+      padding: 50px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card.dark {
+      background-color: #1e1e3f;
+      color: white;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: inherit;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin: 10px 0 20px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      text-align: left;
+    }
+
+    .card ul li {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .card ul li::before {
+      content: "✔ ";
+      color: #000;
+    }
+
+    .card.dark ul li::before {
+      color: white;
+    }
+
+    .card button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #1e1e3f;
+      color: white;
+    }
+
+    .card.dark button {
+      background-color: white;
+      color: #1e1e3f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pricing-section">
+    <!-- Free Plan -->
+    <div class="card">
+      <h2>Free Plan</h2>
+      <p>For personal</p>
+      <h3>$0</h3>
+      <ul>
+        <li>1 users</li>
+        <li>4 Web mails</li>
+        <li>Responsive Website</li>
+        <li>Free SSL</li>
+      </ul>
+      <button>Subscribe now</button>
+    </div>
+
+    <!-- Basic Plan -->
+    <div class="card dark">
+      <h2>Basic Plan</h2>
+      <p>For small business</p>
+      <h3>$29</h3>
+      <ul>
+        <li>4 users</li>
+        <li>10 Web mails</li>
+        <li>Responsive Website</li>
+        <li>Free SSL</li>
+      </ul>
+      <button>Subscribe now</button>
+    </div>
+
+    <!-- Pro Plan -->
+    <div class="card">
+      <h2>Pro Plan</h2>
+      <p>For enterprise</p>
+      <h3>$49</h3>
+      <ul>
+        <li>Unlimited users</li>
+        <li>Unlimited Web mails</li>
+        <li>Responsive Website</li>
+        <li>Free SSL + SEO</li>
+      </ul>
+      <button>Subscribe now</button>
+    </div>
+  </div>
+
+</body>
+</html>
+
