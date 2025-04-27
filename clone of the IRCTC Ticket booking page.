@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC Ticket Booking (Clone)</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Using a common, clean font */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light grey background */
+            color: #333;
+        }
+
+        header {
+            background-color: #ca2127; /* Typical IRCTC red */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .booking-container {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 960px; /* Wider container */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .booking-tabs button {
+            padding: 12px 18px;
+            border: none;
+            background-color: transparent;
+            color: #555;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+            margin-right: 20px;
+            font-size: 1em;
+        }
+
+        .booking-tabs button.active {
+            color: #ca2127;
+            border-bottom: 2px solid #ca2127;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+            gap: 15px;
+            padding: 20px 0;
+            align-items: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .input-group input[type="text"],
+        .input-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .input-group .station-code {
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 3px;
+        }
+
+        .input-group.swap-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input-group.swap-icon img {
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .search-button {
+            background-color: #28a745; /* Green search button */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+            grid-column: 1 / -1; /* Make it full width on smaller screens */
+        }
+
+        .search-button:hover {
+            background-color: #1e7e34;
+        }
+
+        .image-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px auto;
+            max-width: 960px;
+        }
+
+        .image-section img {
+            max-width: 48%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Basic styling for swap icon */
+        .swap-icon {
+            font-size: 1.2em;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://logos-world.net/wp-content/uploads/2020/11/IRCTC-Logo.png" alt="IRCTC Logo">
+            <h1>Indian Railways</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Ask Disha</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Alerts</a></li>
+                <li><a href="#" class="login">Login</a></li>
+                <li><a href="#" class="register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="booking-container">
+        <div class="booking-tabs">
+            <button class="tab active">Book Ticket</button>
+            <button class="tab">PNR Status</button>
+            <button class="tab">Charts / Vacancy</button>
+        </div>
+
+        <div class="booking-form">
+            <div class="input-group">
+                <label for="from">From</label>
+                <input type="text" id="from" placeholder="Enter Source Station">
+                <p class="station-code">Station Code</p>
+            </div>
+            <div class="swap-icon">
+                &#8644; </div>
+            <div class="input-group">
+                <label for="to">To</label>
+                <input type="text" id="to" placeholder="Enter Destination Station">
+                <p class="station-code">Station Code</p>
+            </div>
+            <div class="input-group">
+                <label for="date">Date</label>
+                <input type="text" id="date" placeholder="DD-MM-YYYY">
+            </div>
+            <div class="input-group">
+                <label for="class">Class</label>
+                <select id="class">
+                    <option>All Classes</option>
+                    <option>AC First Class (1A)</option>
+                    <option>AC 2 Tier (2A)</option>
+                    <option>AC 3 Tier (3A)</option>
+                    <option>Sleeper (SL)</option>
+                    <option>... (more classes)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="quota">Quota</label>
+                <select id="quota">
+                    <option>General</option>
+                    <option>Tatkal</option>
+                    <option>Premium Tatkal</option>
+                    <option>Ladies</option>
+                    <option>... (more quotas)</option>
+                </select>
+            </div>
+            <button class="search-button">Search Train</button>
+        </div>
+    </main>
+
+    <div class="image-section">
+        <img src="https://static.toiimg.com/thumb/msid-113623867,width-1280,height-720,imgsize-37242,resizemode-72,overlay-toi_sw,pt-32,y_pad-40/photo.jpg" alt="Vande Bharat Express">
+        <img src="https://images.moneycontrol.com/static-mcnews/2024/09/20240905051350_3-train-journey-india.jpg?impolicy=website&width=1600&height=900" alt="Scenic view of Indian Railways">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Indian Railways (Clone)</p>
+    </footer>
+
+    <script>
+        // Basic tab switching functionality (no content change)
+        const tabs = document.querySelectorAll('.booking-tabs button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
